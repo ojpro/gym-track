@@ -3,7 +3,11 @@
 namespace Tests\Feature\Models;
 
 use App\Models\Attendance;
+use App\Models\Gym;
 use App\Models\Member;
+use App\Models\Membership;
+use App\Models\Owner;
+use App\Models\Subscription;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Str;
@@ -52,5 +56,26 @@ class MemberTest extends TestCase
         $attender = Member::findOrFail($member['id'])->with('attendances')->first();
 
         $this->assertTrue(count($attender['attendances']) === 5);
+    }
+
+    /**
+     * get member subscriptions
+     */
+
+    public function test_get_member_subscriptions()
+    {
+        $owner = Owner::factory()->create();
+        $gym = Gym::factory()->create(['owner_id' => $owner['id']]);
+        $membership = Membership::factory()->create(['gym_id' => $gym['id']]);
+        $member = Member::factory()->create();
+
+        Subscription::factory()->count(4)->create([
+            'member_id' => $member['id'],
+            'membership_id' => $membership['id']
+        ]);
+
+        $subscriber = Member::findOrFail($member['id'])->withCount('subscriptions')->first();
+
+        $this->assertTrue($subscriber['subscriptions_count'] === 4);
     }
 }
