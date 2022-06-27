@@ -10,4 +10,9 @@ class Gym extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'slogan', 'description', 'logo', 'owner_id'];
+
+    /* Relationships */
+    public function owner(){
+        return $this->belongsTo(Owner::class);
+    }
 }
