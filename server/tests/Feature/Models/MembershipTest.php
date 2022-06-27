@@ -48,9 +48,9 @@ class MembershipTest extends TestCase
             'gym_id' => $gym['id']
         ]);
 
-        $membershipGym = Membership::findOrFail($membership['id'])->with('gym')->first();
+        $membershipGym = Membership::findOrFail($membership['id'])->gym()->first();
 
-        $this->assertSame($membershipGym['gym']['id'], $gym['id']);
+        $this->assertSame($membershipGym['id'], $gym['id']);
     }
 
     /**

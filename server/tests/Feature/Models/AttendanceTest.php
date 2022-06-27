@@ -35,8 +35,8 @@ class AttendanceTest extends TestCase
             'member_id' => $member['id']
         ]);
 
-        $attender = Attendance::findOrFail($attendance['id'])->with('member')->first();
+        $attender = Attendance::findOrFail($attendance['id'])->member()->first();
 
-        $this->assertSame($attender['member']['id'], $member['id']);
+        $this->assertSame($attender['id'], $member['id']);
     }
 }

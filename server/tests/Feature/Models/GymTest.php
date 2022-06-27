@@ -23,9 +23,9 @@ class GymTest extends TestCase
             'owner_id' => $owner['id']
         ]);
 
-        $relation = Gym::findOrFail($gym['id'])->with('owner')->first();
+        $relation = Gym::findOrFail($gym['id'])->owner()->first();
 
-        $this->assertSame($relation['owner']['id'], $owner['id']);
+        $this->assertSame($relation['id'], $owner['id']);
     }
 
     /*

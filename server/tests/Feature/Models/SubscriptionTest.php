@@ -52,9 +52,9 @@ class SubscriptionTest extends TestCase
             'membership_id' => $membership['id']
         ]);
 
-        $subscriber = Subscription::findOrFail($subscription['id'])->with('member')->first();
+        $subscriber = Subscription::findOrFail($subscription['id'])->member()->first();
 
-        $this->assertSame($subscriber['member']['id'], $member['id']);
+        $this->assertSame($subscriber['id'], $member['id']);
     }
 
     /**
@@ -75,8 +75,8 @@ class SubscriptionTest extends TestCase
             'membership_id' => $membership['id']
         ]);
 
-        $subscriptionMembership = Subscription::findOrFail($subscription['id'])->with('membership')->first();
+        $subscriptionMembership = Subscription::findOrFail($subscription['id'])->membership()->first();
 
-        $this->assertSame($subscriptionMembership['membership']['id'],$membership['id']);
+        $this->assertSame($subscriptionMembership['id'],$membership['id']);
     }
 }

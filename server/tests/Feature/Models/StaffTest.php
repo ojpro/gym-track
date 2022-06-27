@@ -46,8 +46,8 @@ class StaffTest extends TestCase
             'gym_id' => $gym['id']
         ]);
 
-        $work_in = Staff::findOrFail($staff['id'])->with('gym')->first();
+        $work_in = Staff::findOrFail($staff['id'])->gym()->first();
 
-        $this->assertSame($work_in['gym']['id'], $gym['id']);
+        $this->assertSame($work_in['id'], $gym['id']);
     }
 }
