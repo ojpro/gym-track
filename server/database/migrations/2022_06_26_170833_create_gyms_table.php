@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('slogan')->nullable();
             $table->text('description')->nullable();
             $table->text('logo')->nullable();
-            $table->foreignId('owner_id')->nullable()->constrained();
+            $table->foreignId('owner_id')->constrained();
             $table->timestamps();
         });
     }

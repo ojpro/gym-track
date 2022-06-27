@@ -3,6 +3,7 @@
 namespace Tests\Feature\Models;
 
 use App\Models\Gym;
+use App\Models\Owner;
 use App\Models\Staff;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -27,7 +28,11 @@ class StaffTest extends TestCase
      */
     public function test_create_staff()
     {
-        $gym = Gym::factory()->create();
+        $owner = Owner::factory()->create();
+
+        $gym = Gym::factory()->create([
+            'owner_id' => $owner['id']
+        ]);
 
         $staff = Staff::factory()->create([
             'gym_id' => $gym['id']
@@ -42,7 +47,11 @@ class StaffTest extends TestCase
 
     public function test_get_staff_gym()
     {
-        $gym = Gym::factory()->create();
+        $owner = Owner::factory()->create();
+
+        $gym = Gym::factory()->create([
+            'owner_id' => $owner['id']
+        ]);
 
         $staff = Staff::factory()->create([
             'gym_id' => $gym['id']

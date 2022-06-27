@@ -44,7 +44,11 @@ class GymTest extends TestCase
      */
     public function test_get_gym_memberships()
     {
-        $gym = Gym::factory()->create();
+        $owner = Owner::factory()->create();
+
+        $gym = Gym::factory()->create([
+            'owner_id' => $owner['id']
+        ]);
 
         $memberships = Membership::factory()
             ->count(2)
