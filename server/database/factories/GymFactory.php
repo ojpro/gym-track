@@ -17,7 +17,7 @@ class GymFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->company(),
             'slogan' => $this->faker->slug(),
             'description' => $this->faker->text(),
             'logo' => $this->faker->imageUrl()
