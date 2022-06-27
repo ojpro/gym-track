@@ -11,8 +11,13 @@ class Subscription extends Model
 
     protected $fillable = ['status', 'member_id', 'membership_id', 'number', 'started_at', 'expire_at'];
 
-    public function member(){
+    public function member()
+    {
         return $this->belongsTo(Member::class);
     }
-    //TODO: membership
+
+    public function membership()
+    {
+        return $this->belongsTo(Membership::class);
+    }
 }
