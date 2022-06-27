@@ -11,17 +11,6 @@ use Tests\TestCase;
 
 class StaffTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_example()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
 
     /*
      * Create a staff
