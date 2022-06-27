@@ -16,4 +16,8 @@ class Member extends Model
 
     /* Relationships */
     //TODO: gym, current membership
+
+    public function attendances(){
+        return $this->hasMany(Attendance::class);
+    }
 }
