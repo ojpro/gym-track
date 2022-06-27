@@ -81,4 +81,51 @@ class MemberTest extends TestCase
 
         $this->assertTrue($subscriber['subscriptions_count'] === 4);
     }
+
+    /**
+     * get latest subscription
+     */
+    public function test_get_latest_subscription()
+    {
+        $owner = Owner::factory()->create();
+
+        $gym = Gym::factory()->create(['owner_id' => $owner['id']]);
+
+        $membership = Membership::factory()->create(['gym_id' => $gym['id']]);
+
+        $member = Member::factory()->create();
+
+        $subscriptions = Subscription::factory()->count(4)->create([
+            'member_id' => $member['id'],
+            'membership_id' => $membership['id']
+        ]);
+
+        $latestSubscription = Member::findOrFail($member['id'])->latestSubscription()->first();
+
+        $this->assertSame($latestSubscription['id'], $subscriptions[3]['id']);
+    }
+
+    /**
+     * get current subscription
+     */
+
+    public function test_get_current_subscription()
+    {
+        $owner = Owner::factory()->create();
+
+        $gym = Gym::factory()->create(['owner_id' => $owner['id']]);
+
+        $membership = Membership::factory()->create(['gym_id' => $gym['id']]);
+
+        $member = Member::factory()->create();
+
+        Subscription::factory()->count(10)->create([
+            'member_id' => $member['id'],
+            'membership_id' => $membership['id']
+        ]);
+
+        $currentSubscription = Member::findOrFail($member['id'])->currentSubscription()->first();
+
+        $this->assertSame($currentSubscription['status'],'current');
+    }
 }
