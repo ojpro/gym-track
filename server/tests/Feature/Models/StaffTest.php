@@ -23,7 +23,7 @@ class StaffTest extends TestCase
             'owner_id' => $owner['id']
         ]);
 
-        $staff = Staff::factory()->create([
+        Staff::factory()->create([
             'gym_id' => $gym['id']
         ]);
 

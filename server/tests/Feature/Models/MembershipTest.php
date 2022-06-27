@@ -24,7 +24,7 @@ class MembershipTest extends TestCase
             'owner_id' => $owner['id']
         ]);
 
-        $membership = Membership::factory()->create([
+        Membership::factory()->create([
             'gym_id' => $gym['id']
         ]);
 
