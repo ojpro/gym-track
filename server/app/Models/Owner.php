@@ -10,4 +10,10 @@ class Owner extends Model
     use HasFactory;
 
     protected $fillable = ['full_name', 'phone', 'email', 'password'];
+
+    /* Relationships */
+
+    public function gyms(){
+        return $this->hasMany(Gym::class);
+    }
 }
