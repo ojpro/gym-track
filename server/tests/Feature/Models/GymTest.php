@@ -45,8 +45,8 @@ class GymTest extends TestCase
                 'gym_id' => $gym['id']
             ]);
 
-        $gymMemberships = Gym::findOrFail($gym['id'])->with('memberships')->first();
+        $gymMemberships = Gym::findOrFail($gym['id'])->withCount('memberships')->first();
 
-        $this->assertTrue(count($gymMemberships['memberships']) === 2);
+        $this->assertTrue($gymMemberships['memberships_count'] === 2);
     }
 }

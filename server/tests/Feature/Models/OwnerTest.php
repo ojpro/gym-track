@@ -32,10 +32,10 @@ class OwnerTest extends TestCase
             'owner_id' => $owner['id']
         ]);
 
-        $owned = Owner::findOrFail($owner['id'])->with('gyms')->first();
+        $owned = Owner::findOrFail($owner['id'])->withCount('gyms')->first();
 
         // TODO: improve assertion
-        $this->assertTrue(count($owned['gyms']->toArray()) === 3);
+        $this->assertTrue($owned['gyms_count'] === 3);
 
     }
 }

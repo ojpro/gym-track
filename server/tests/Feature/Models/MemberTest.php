@@ -53,9 +53,9 @@ class MemberTest extends TestCase
             'member_id' => $member['id']
         ]);
 
-        $attender = Member::findOrFail($member['id'])->with('attendances')->first();
+        $attender = Member::findOrFail($member['id'])->withCount('attendances')->first();
 
-        $this->assertTrue(count($attender['attendances']) === 5);
+        $this->assertTrue($attender['attendances_count'] === 5);
     }
 
     /**
