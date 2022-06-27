@@ -12,7 +12,13 @@ class Gym extends Model
     protected $fillable = ['name', 'slogan', 'description', 'logo', 'owner_id'];
 
     /* Relationships */
-    public function owner(){
+    public function owner()
+    {
         return $this->belongsTo(Owner::class);
+    }
+
+    public function memberships()
+    {
+        return $this->hasMany(Membership::class);
     }
 }

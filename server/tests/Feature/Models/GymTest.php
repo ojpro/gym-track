@@ -3,6 +3,7 @@
 namespace Tests\Feature\Models;
 
 use App\Models\Gym;
+use App\Models\Membership;
 use App\Models\Owner;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -35,6 +36,24 @@ class GymTest extends TestCase
 
         $relation = Gym::findOrFail($gym['id'])->with('owner')->first();
 
-        $this->assertSame($relation['owner']['id'],$owner['id']);
+        $this->assertSame($relation['owner']['id'], $owner['id']);
+    }
+
+    /*
+     * get gym's memberships
+     */
+    public function test_get_gym_memberships()
+    {
+        $gym = Gym::factory()->create();
+
+        $memberships = Membership::factory()
+            ->count(2)
+            ->create([
+                'gym_id' => $gym['id']
+            ]);
+
+        $gymMemberships = Gym::findOrFail($gym['id'])->with('memberships')->first();
+
+        $this->assertTrue(count($gymMemberships['memberships']) === 2);
     }
 }
