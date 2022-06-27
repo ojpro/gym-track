@@ -15,9 +15,7 @@ return new class extends Migration {
         Schema::create('memberships', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->tinyInteger('attendances')
-                ->unique()
-                ->default(1);
+            $table->tinyInteger('attendances');
             $table->float('price');
             $table->text('notes')->nullable();
             $table->foreignId('gym_id')->constrained();
