@@ -19,8 +19,11 @@ class SubscriptionTest extends TestCase
     public function test_create_subscription()
     {
         $owner = Owner::factory()->create();
+
         $gym = Gym::factory()->create(['owner_id' => $owner['id']]);
+
         $membership = Membership::factory()->create(['gym_id' => $gym['id']]);
+
         $member = Member::factory()->create();
 
         Subscription::factory()->create([
@@ -37,8 +40,11 @@ class SubscriptionTest extends TestCase
     public function test_get_subscriber()
     {
         $owner = Owner::factory()->create();
+
         $gym = Gym::factory()->create(['owner_id' => $owner['id']]);
+
         $membership = Membership::factory()->create(['gym_id' => $gym['id']]);
+
         $member = Member::factory()->create();
 
         $subscription = Subscription::factory()->create([

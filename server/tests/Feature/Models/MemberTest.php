@@ -65,8 +65,11 @@ class MemberTest extends TestCase
     public function test_get_member_subscriptions()
     {
         $owner = Owner::factory()->create();
+
         $gym = Gym::factory()->create(['owner_id' => $owner['id']]);
+
         $membership = Membership::factory()->create(['gym_id' => $gym['id']]);
+
         $member = Member::factory()->create();
 
         Subscription::factory()->count(4)->create([

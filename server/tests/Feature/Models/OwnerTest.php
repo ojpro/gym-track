@@ -16,7 +16,7 @@ class OwnerTest extends TestCase
      */
     public function test_create_owner()
     {
-        $owner = Owner::factory()->create();
+        Owner::factory()->create();
 
         $this->assertDatabaseCount('owners', 1);
     }
