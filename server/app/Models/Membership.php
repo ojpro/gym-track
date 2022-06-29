@@ -19,4 +19,8 @@ class Membership extends Model
     public function subscriptions(){
         return $this->hasMany(Subscription::class);
     }
+
+    public function members(){
+        return $this->belongsToMany(Member::class,'subscriptions')->distinct();
+    }
 }

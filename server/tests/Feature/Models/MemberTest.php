@@ -126,6 +126,6 @@ class MemberTest extends TestCase
 
         $currentSubscription = Member::findOrFail($member['id'])->currentSubscription()->first();
 
-        $this->assertSame($currentSubscription['status'],'current');
+        $this->assertSame($currentSubscription['status'], 'current');
     }
 }
