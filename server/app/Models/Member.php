@@ -34,6 +34,12 @@ class Member extends Model
 
     public function currentSubscription()
     {
-        return $this->hasOne(Subscription::class)->where(['status'=>'current']);
+        return $this->hasOne(Subscription::class)->where(['status' => 'current']);
+    }
+
+    public function currentMembership()
+    {
+        return $this->belongsToMany(Membership::class, 'subscriptions')
+            ->where(['status' => 'current']);
     }
 }
