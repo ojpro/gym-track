@@ -17,11 +17,12 @@ class SubscriptionFactory extends Factory
      */
     public function definition()
     {
+        $random_date = $this->faker->dateTime();
         return [
             'status' => $this->faker->randomElement(['current', 'pending', 'canceled', 'expired']),
             'number' => $this->faker->numberBetween(1, 12),
-            'started_at' => Carbon::create($this->faker->dateTime())->toDateTimeString(),
-            'expire_at' => Carbon::create($this->faker->dateTime())
+            'started_at' => Carbon::create($random_date)->toDateTimeString(),
+            'expire_at' => Carbon::create($random_date)
                 ->addMonths($this->faker->numberBetween(1, 12))
                 ->toDateTimeString()
         ];
