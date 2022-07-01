@@ -11,6 +11,9 @@ class Staff extends Model
 
     protected $fillable = ['first_name', 'last_name', 'phone', 'username', 'email', 'password', 'gym_id'];
 
+    protected $hidden = [
+        'password'
+    ];
     /* Relationships */
 
     public function gym(){

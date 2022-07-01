@@ -11,6 +11,9 @@ class Owner extends Model
 
     protected $fillable = ['full_name', 'phone', 'email', 'password'];
 
+    protected $hidden = [
+        'password'
+    ];
     /* Relationships */
 
     public function gyms(){

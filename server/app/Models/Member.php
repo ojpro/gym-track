@@ -14,6 +14,9 @@ class Member extends Model
         'birthday', 'gender', 'weight', 'height', 'address',
         'photo', 'phone', 'username', 'email', 'password'];
 
+    protected $hidden = [
+        'password'
+    ];
     /* Relationships */
     //TODO: gym, current membership
 
