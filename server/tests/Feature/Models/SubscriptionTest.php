@@ -82,6 +82,8 @@ class SubscriptionTest extends TestCase
         $this->assertSame($subscriptionMembership['id'],$membership['id']);
     }
 
+    //TODO: learn how to write good test (that can improve performance).
+
     /*
      * get subscription attendances
      */
