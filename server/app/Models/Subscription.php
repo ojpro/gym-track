@@ -20,4 +20,10 @@ class Subscription extends Model
     {
         return $this->belongsTo(Membership::class);
     }
+
+    public function attendances(){
+        return $this->member()->with(['attendances'=>function($query){
+            $query->whereBetween('attendances.attend_at',[$this->started_at,$this->expire_at]);
+        }]);
+    }
 }
