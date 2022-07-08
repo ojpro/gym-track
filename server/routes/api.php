@@ -14,4 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('owner', \App\Http\Controllers\OwnerController::class);
+Route::prefix('owner')->group(function () {
+    Route::apiResource('owner', \App\Http\Controllers\OwnerController::class);
+    Route::get('{owner}/gyms', [\App\Http\Controllers\OwnerController::class, 'gyms'])->name('owner.gyms');
+});

@@ -24,7 +24,7 @@ class OwnerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\StoreOwnerRequest $request
+     * @param StoreOwnerRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreOwnerRequest $request)
@@ -46,7 +46,7 @@ class OwnerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Owner $owner
+     * @param Owner $owner
      * @return \Illuminate\Http\Response
      */
     public function show(Owner $owner)
@@ -59,8 +59,8 @@ class OwnerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\UpdateOwnerRequest $request
-     * @param \App\Models\Owner $owner
+     * @param UpdateOwnerRequest $request
+     * @param Owner $owner
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateOwnerRequest $request, Owner $owner)
@@ -84,7 +84,7 @@ class OwnerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Owner $owner
+     * @param Owner $owner
      * @return \Illuminate\Http\Response
      */
     public function destroy(Owner $owner)
@@ -95,4 +95,19 @@ class OwnerController extends Controller
 
         return response(['success' => 'Owner Deleted Successfully.']);
     }
+
+    /**
+     * Get Owner's gyms
+     *
+     * @param Owner $owner
+     * @return \Illuminate\Http\Response
+     */
+
+    public function gyms(Owner $owner)
+    {
+        $gyms = Owner::findOrFail($owner['id'])->with('gyms')->first();
+
+        return response($gyms);
+    }
+
 }

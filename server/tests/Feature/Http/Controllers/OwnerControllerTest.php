@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers;
 
+use App\Models\Gym;
 use App\Models\Owner;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -111,5 +112,21 @@ class OwnerControllerTest extends TestCase
         $response = $this->delete(route('owner.destroy', $owner));
 
         $this->assertDatabaseCount('owners', 0);
+    }
+
+    /*
+     * Get Owner's list of gyms
+     */
+    public function test_get_owner_gyms()
+    {
+        $owner = Owner::factory()->create();
+
+        $gyms = Gym::factory()->count(3)->create([
+            'owner_id' => $owner['id']
+        ]);
+
+        $http_response_header = $this->get(route('owner.gyms', $owner));
+
+        $this->assertSameSize($http_response_header['gyms'], $gyms->toArray());
     }
 }
