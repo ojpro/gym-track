@@ -109,7 +109,7 @@ class OwnerControllerTest extends TestCase
     {
         $owner = Owner::factory()->create();
 
-        $response = $this->delete(route('owner.destroy', $owner));
+        $this->delete(route('owner.destroy', $owner));
 
         $this->assertDatabaseCount('owners', 0);
     }
@@ -127,6 +127,6 @@ class OwnerControllerTest extends TestCase
 
         $http_response_header = $this->get(route('owner.gyms', $owner));
 
-        $this->assertSameSize($http_response_header['gyms'], $gyms->toArray());
+        $http_response_header->assertJson($gyms->toArray());
     }
 }

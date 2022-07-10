@@ -89,7 +89,7 @@ class MembershipTest extends TestCase
 
         $gym = Gym::factory()->create(['owner_id' => $owner['id']]);
 
-        $memberships = Membership::factory()->count(3)->create([
+        Membership::factory()->count(3)->create([
             'gym_id' => $gym['id']
         ]);
 

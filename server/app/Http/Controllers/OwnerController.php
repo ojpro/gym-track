@@ -105,7 +105,7 @@ class OwnerController extends Controller
 
     public function gyms(Owner $owner)
     {
-        $gyms = Owner::findOrFail($owner['id'])->with('gyms')->first();
+        $gyms = Owner::findOrFail($owner['id'])->gyms()->get();
 
         return response($gyms);
     }
