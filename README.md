@@ -9,10 +9,10 @@ Full-Stack project to manage gyms,track members' attendances and subscriptions.
 
 ```bash
   # using SSH
-  git clone git@github.com:ojpro/gym.git
+  git clone git@github.com:ojpro/gym-track.git
 
   # using HTTPS
-  https://github.com/ojpro/gym.git
+  git clone https://github.com/ojpro/gym-track.git
 
 ```
 
@@ -20,7 +20,7 @@ Full-Stack project to manage gyms,track members' attendances and subscriptions.
 
 ```bash
   # go to server folder
-  cd gym/server
+  cd gym-track/server
 
   # install composer packages
   composer Install
