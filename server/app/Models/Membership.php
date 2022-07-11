@@ -9,7 +9,13 @@ class Membership extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'attendances', 'price', 'notes', 'gym_id'];
+    protected $fillable = [
+        'name',
+        'attendances',
+        'price',
+        'notes',
+        'gym_id'
+    ];
 
     /* Relationships */
     public function gym(){
