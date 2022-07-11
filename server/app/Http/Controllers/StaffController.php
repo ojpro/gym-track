@@ -99,7 +99,7 @@ class StaffController extends Controller
     public function gym(Staff $staff)
     {
         $gym = Staff::findOrFail($staff['id'])->gym()->first();
-
+        
         return response($gym);
     }
 }
