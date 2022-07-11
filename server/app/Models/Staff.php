@@ -9,7 +9,15 @@ class Staff extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['first_name', 'last_name', 'phone', 'username', 'email', 'password', 'gym_id'];
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'phone',
+        'username',
+        'email',
+        'password',
+        'gym_id'
+    ];
 
     protected $hidden = [
         'password'

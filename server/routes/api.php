@@ -23,3 +23,8 @@ Route::prefix('gym')->group(function () {
     Route::apiResource('gym', \App\Http\Controllers\GymController::class);
     Route::get('{gym}/owner', [\App\Http\Controllers\GymController::class, 'owner'])->name('gym.owner');
 });
+
+Route::prefix('staff')->group(function () {
+    Route::apiResource('staff', \App\Http\Controllers\StaffController::class);
+    Route::get('{staff}/gym', [\App\Http\Controllers\StaffController::class, 'gym'])->name('staff.gym');
+});
