@@ -29,7 +29,7 @@ class UpdateMemberRequest extends FormRequest
             'first_name' => ['string', 'min:3'],
             'last_name' => ['string', 'min:3'],
             'birthday' => ['date'],
-            'gender' => ['enum:male,female,indeterminate,unknown'],
+            'gender' => ['in:male,female,indeterminate,unknown'],
             'weight' => ['numeric'],
             'height' => ['numeric'],
             'address' => ['string', 'min:3'],
