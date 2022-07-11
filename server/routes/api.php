@@ -33,3 +33,8 @@ Route::prefix('membership')->group(function () {
     Route::apiResource('membership', \App\Http\Controllers\MembershipController::class);
     Route::get('{membership}/gym', [\App\Http\Controllers\MembershipController::class, 'gym'])->name('membership.gym');
 });
+
+Route::prefix('member')->group(function () {
+    Route::apiResource('member', \App\Http\Controllers\MemberController::class);
+    Route::get('{member}/gym', [\App\Http\Controllers\MemberController::class, 'gym'])->name('member.gym');
+});
