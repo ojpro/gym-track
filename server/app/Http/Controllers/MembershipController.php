@@ -91,4 +91,6 @@ class MembershipController extends Controller
 
         return response($gym);
     }
+
+    //TODO: subscriptions & members relationship @tomorrow
 }
