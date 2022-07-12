@@ -41,5 +41,8 @@ Route::prefix('member')->group(function () {
 
 Route::prefix('subscription')->group(function () {
     Route::apiResource('subscription', \App\Http\Controllers\SubscriptionController::class);
-    Route::get('{subscription}/gym', [\App\Http\Controllers\SubscriptionController::class, 'gym'])->name('subscription.gym');
+});
+
+Route::prefix('attendance')->group(function () {
+    Route::apiResource('attendance', \App\Http\Controllers\AttendanceController::class);
 });
