@@ -9,7 +9,14 @@ class Subscription extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['status', 'member_id', 'membership_id', 'number', 'started_at', 'expire_at'];
+    protected $fillable = [
+        'status',
+        'member_id',
+        'membership_id',
+        'number',
+        'started_at',
+        'expire_at'
+    ];
 
     public function member()
     {

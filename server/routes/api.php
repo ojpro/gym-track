@@ -38,3 +38,8 @@ Route::prefix('member')->group(function () {
     Route::apiResource('member', \App\Http\Controllers\MemberController::class);
     Route::get('{member}/gym', [\App\Http\Controllers\MemberController::class, 'gym'])->name('member.gym');
 });
+
+Route::prefix('subscription')->group(function () {
+    Route::apiResource('subscription', \App\Http\Controllers\SubscriptionController::class);
+    Route::get('{subscription}/gym', [\App\Http\Controllers\SubscriptionController::class, 'gym'])->name('subscription.gym');
+});
