@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,7 @@ class AttendanceFactory extends Factory
     public function definition()
     {
         return [
-            'attend_at' => $this->faker->dateTime()
+            'attend_at' => Carbon::now()->toDateTimeLocalString()
         ];
     }
 }
